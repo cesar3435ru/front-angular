@@ -10,7 +10,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import { PracticaComponent } from './practica/practica.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 
@@ -28,7 +27,6 @@ import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
-    PracticaComponent,
     LoginComponent,
     FormularioComponent,
     UsersComponent
