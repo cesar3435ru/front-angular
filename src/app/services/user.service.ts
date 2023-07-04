@@ -32,6 +32,10 @@ export class UserService {
     return this.isAuthenticated.asObservable();
   }
 
+  getTasks(id:string){
+    
+  }
+
   addUser(user: any) {
     return this.http.post(this.url + '/api/users/createUser', user);
   }
@@ -47,6 +51,13 @@ export class UserService {
   saveUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
 
+  }
+
+  tasksByUser(){
+    const jsonData = localStorage.getItem('user')?? '';
+    const parsedData = JSON.parse(jsonData);
+    const id = parsedData.id;
+    return this.http.get(`http://localhost:3000/api/task/searchu?userId=${id}`);
   }
   
   listOfUsers() {

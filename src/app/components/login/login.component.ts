@@ -31,28 +31,53 @@ export class LoginComponent implements OnInit {
   // }
 
 
-  login() {
-    console.log(this.loginForm.value);
-    this.user.loginIn(this.loginForm.value).subscribe(
-      (data: any) => {
-        this.user.saveToken(data.myToken);
-        this.user.saveUser(data.nombre);
-        console.log('Welcome');
-        // console.log('esta es mi', data);
-        this.openSnackBar('Login successfully!!!', 'Close');
-        this.user.isAuthenticated.next(true); // Establecer isAuthenticated a true
-        console.log(this.user.isAuthenticated);
+  // login() {
+  //   console.log(this.loginForm.value);
+  //   this.user.loginIn(this.loginForm.value).subscribe(
+  //     (data: any) => {
+  //       this.user.saveToken(data.myToken);
+  //       this.user.saveUser(data.nombre);
+  //       // this.user.saveUser(data);
+  //       console.log('Welcome');
+  //       // console.log('esta es mi', data);
+  //       this.openSnackBar('Login successfully!!!', 'Close');
+  //       this.user.isAuthenticated.next(true); // Establecer isAuthenticated a true
+  //       console.log(this.user.isAuthenticated);
 
-        this.loginForm.reset();
-        this.rou.navigate(['/list']);
-      },
-      error => {
-        this.loginForm.reset();
+  //       this.loginForm.reset();
+  //       this.rou.navigate(['/tasks']);
+  //     },
+  //     error => {
+  //       this.loginForm.reset();
+  //       this.openSnackBar('Error!!!', 'Close');
+  //       console.log(error);
+
+  //     }
+  //   )
+  // }
+
+
+
+  login() {
+
+    this.user.loginIn(this.loginForm.value).subscribe(
+      (datos: any) => {
+        if (datos) {
+
+          this.openSnackBar('Login successfully!!!', 'Close');
+          this.user.saveToken(datos.myToken);
+          this.user.saveUser(datos);
+          this.loginForm.reset();
+          this.rou.navigate(['/tasks']);
+
+        }
+      }, error => {
         this.openSnackBar('Error!!!', 'Close');
-        console.log(error);
+        this.loginForm.reset();
 
       }
     )
+
   }
 
 

@@ -5,6 +5,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { LoginComponent } from './components/login/login.component';
 import { UsersComponent } from './components/users/users.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 
@@ -26,6 +27,12 @@ const routes: Routes = [
   {
     path: 'list',
     component: UsersComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'tasks',
+    component: TasksComponent,
     canActivate: [AuthGuard]
 
   }

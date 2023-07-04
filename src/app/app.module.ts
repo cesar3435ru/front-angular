@@ -23,13 +23,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './components/users/users.component';
 import {MatTableModule} from '@angular/material/table';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FormularioComponent,
-    UsersComponent
+    UsersComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
